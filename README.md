@@ -33,9 +33,33 @@ devices (in Debian linux):
     
 You also need to create a udev rule to allow all users to access the
 barcode scanner. In /etc/udev/rules.d, create a file that ends in .rules
-such as 55-barcode-scanner.rules with these contents:
+such as `55-barcode-scanner.rules` with these contents:
 
-    (TBD)
-    
+    # Set permissions to let anyone use barcode scanner
+    SUBSYSTEM=="usb", ATTR{idVendor}=="05e0", ATTR{idProduct}=="1200", MODE="666"
+
 # Testing Environment
 This was tested on a Raspberry Pi Zero W running Rasbian Stretch Lite. USB interface was using a USB-OTG cable.
+This should work as-is with any Debian-based Linux system.
+
+# The MIT License
+
+Copyright (c) 2019 Vince Patron, http://vince.patronweb.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
