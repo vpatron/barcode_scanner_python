@@ -130,7 +130,7 @@ def hid2ascii(lst):
 # Find our device using the VID (Vendor ID) and PID (Product ID)
 dev = usb.core.find(idVendor=0x05e0, idProduct=0x1200)
 if dev is None:
-    raise ValueError('Device not found')
+    raise ValueError('USB device not found')
 
 # Disconnect it from kernel
 needs_reattach = False
@@ -155,7 +155,7 @@ ep = usb.util.find_descriptor(
         usb.util.endpoint_direction(e.bEndpointAddress) == \
         usb.util.ENDPOINT_IN)
 
-assert ep is not None, "USB barcode scanner device not connected"
+assert ep is not None, "Endpoint for USB device not found. Something is wrong."
 
 # Loop through a series of 8-byte transactions and convert each to an
 # ASCII character. Print output after 0.5 seconds of no data.
