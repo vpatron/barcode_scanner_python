@@ -4,18 +4,25 @@ Linux Python code to read from a USB barcode scanner directly. A symbol LS2208 w
 ![LS2208 Barcode Scanner](Symbol%20LS2208%20Barcode%20Scanner.png "Symbol LS2208 Barcode Scanner")
 
 This uses the pyusb module to read the popular LS2208 USB barcode 
-scanner in Linux. This barcode scanner is sold under many labels. It
-is a USB HID device and shows up as a keyboard so a scan will "type"
-the data into any program. But that also becomes its limitation. Often,
-you don't want it to act like it's typing on a keyboard; you just want
-to get data directly from it.
+scanner in Linux. This barcode scanner is sold under many labels.
 
-This program detaches the device from the kernel so it will not "type"
-anything, and reads directly from the device without needing any device-
-specific USB drivers.
+## What's the big deal?
+
+This barcode scanner acts like a keyboard so scanning a bar code types out
+the data as if you were typing. Easy-peesy, right?
+
+Well, the problem is, I don't want a console user logged into the computer. For
+security reasons, I want my program to just read directly from the barcode
+reader as if it were some other data device without having to read "keyboard
+input".
+
+So this program detaches the device from the kernel so it will not "type"
+anything, and then reads directly from the barcode scanner. It does not
+need any special drivers for the barcode scanner.
 
 # Installation
-It does use pyusb to do low-level USB comm. See 
+
+This uses pyusb to do low-level USB comm. See 
 https://github.com/pyusb/pyusb for installation requirements. Basically, 
 you need to install pyusb:
 
