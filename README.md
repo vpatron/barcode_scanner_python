@@ -47,6 +47,12 @@ such as `55-barcode-scanner.rules` with these contents:
     # Set permissions to let anyone use barcode scanner
     SUBSYSTEM=="usb", ATTR{idVendor}=="05e0", ATTR{idProduct}=="1200", MODE="666"
 
+This tells the computer, if a USB device with Vendor ID = 0x05e0 and Product ID = 0x1200 is plugged in
+(which is this LS2208 Symbol/Motorola barcode scanner), then set mode to "666" (any user can read
+and write to the device).
+
+To get the updated permissions, reboot or just unplug and replug the barcode scanner.
+
 # Testing Environment
 This was tested on a Raspberry Pi Zero W running Rasbian Stretch Lite. USB interface was using a USB-OTG cable.
 This should work as-is with any Debian-based Linux system.
