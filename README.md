@@ -14,7 +14,9 @@ the data as if you were typing. Easy-peesy, right?
 Well, the problem is, I don't want a console user logged into the computer. For
 security reasons, I want my program to just read directly from the barcode
 reader as if it were some other data device without having to read "keyboard
-input".
+input". Otherwise, someone can just plug in a keyboard, hit Ctrl-C, and get a
+console prompt to control the computer. (Yeah, there's ways to disable this
+but the method presented here is probably more bullet proof.)
 
 So this program detaches the device from the kernel so it will not "type"
 anything, and then reads directly from the barcode scanner. It does not
